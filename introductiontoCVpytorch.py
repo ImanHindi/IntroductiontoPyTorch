@@ -5,7 +5,7 @@ import torchvision
 from pytorchcv import load_mnist, plot_results
 from torchinfo import summary
 
-load_mnist()
+data_train,data_test=load_mnist()
 net = nn.Sequential(
         nn.Flatten(), 
         nn.Linear(784,10), # 784 inputs, 10 outputs

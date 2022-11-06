@@ -6,12 +6,14 @@ import torchvision
 from pytorchcv import (display_dataset, load_mnist, plot_convolution,
                        plot_results, train)
 from torchinfo import summary
+data_train,data_test=load_mnist(batch_size=128)
 
-load_mnist(batch_size=128)
 #Let's see the examples of applying two different convolutional filters over our MNIST handwritten digits:
 
 plot_convolution(torch.tensor([[-1.,0.,1.],[-1.,0.,1.],[-1.,0.,1.]]),'Vertical edge filter')
 plot_convolution(torch.tensor([[-1.,-1.,-1.],[0.,0.,0.],[1.,1.,1.]]),'Horizontal edge filter')
+train_loader = torch.utils.data.DataLoader(data_train, batch_size=14, shuffle=True)
+test_loader = torch.utils.data.DataLoader(data_test, batch_size=14, shuffle=False)
 
 class OneConv(nn.Module):
     def __init__(self):
